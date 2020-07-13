@@ -10,7 +10,7 @@ interface ISearchBarProps{
 }
 
 
-function SearchBar() {
+function SearchBar(props: ISearchBarProps) {
 
     const [SearchQuery, setSearchQuery] = useState<string | null>("");
     const handleSearchQueryChange = (s: string | null) =>{
@@ -39,7 +39,7 @@ function SearchBar() {
                 StartDate: StartDate,
                 EndDate: EndDate
             }
-            //props.SetUserInput(UserInput);
+            props.SetUserInput(UserInput);
         } else {
             setHasFocus(true);
         }
@@ -59,6 +59,7 @@ function SearchBar() {
                     onChange={e => handleSearchQueryChange(e.target.value)}
                 />
             </Grid>
+
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Grid item xs={6} sm={3}>
                     <KeyboardDatePicker
